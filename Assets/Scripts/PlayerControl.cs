@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
 
-	public float speed = 1;
+	public float runningSpeed = 0.1f;
+	public float turnSpeed = 0.1f;
 	public KeyCode left;
 	public KeyCode right;
 	public KeyCode jump;
@@ -22,13 +23,13 @@ public class PlayerControl : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		
+		this.transform.Translate(Vector3.forward * runningSpeed);
 		//this.transform.Rotate(Vector3.up * speed);
 		if (Input.GetKey(left))
-			this.transform.Rotate(-Vector3.up * speed);
+			this.transform.Rotate(-Vector3.up * turnSpeed);
 		  
 		else if (Input.GetKey(right))
-			transform.Rotate(Vector3.up * speed);
+			transform.Rotate(Vector3.up * turnSpeed);
 
 		if (Input.GetKey(jump))
 			animations.Play("Running Jump");
